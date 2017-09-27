@@ -1,0 +1,36 @@
+Step1: Concatenating files
+BEAR 1 (CLA)
+cat CLA*R1* > CLA_R1_merged.fq.gz
+
+cat CLA*R2* > CLA_R2_merged.fq.gz
+
+BEAR 2 (FLHy)
+cat FLHy*R1* > FLHy_R1_merged.fq.gz
+
+cat FLHy*R2* > FLHy_R2_merged.fq.gz
+
+BEAR 3 (JLA)
+cat JLA*R1* > JLA_R1_merged.fq.gz
+
+cat JLA*R2* > JLA_R2_merged.fq.gz
+
+
+BEAR 4 (OLA)
+cat OLA*R1* > OLA_R1_merged.fq.gz 
+
+cat OLA*R2* > OLA_R2_merged.fq.gz
+
+
+BEAR 5 (PLA)
+cat PLA*R1* > PLA_R1_merged.fq.gz 
+
+cat PLA*R2* > PLA_R2_merged.fq.gz
+
+
+BEAR 6 (RLA)
+cat RLA*R1* > RLA_R1_merged.fq.gz
+
+cat RLA*R2* > RLA_R2_merged.fq.gz
+
+COUNT NUMBER OF LINES IN GZIPPED FILE
+zcat file.fq.gz | wc -l
