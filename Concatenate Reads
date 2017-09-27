@@ -1,8 +1,10 @@
 Step1: Concatenating files
 BEAR 1 (CLA)
+```
 cat CLA*R1* > CLA_R1_merged.fq.gz
 
 cat CLA*R2* > CLA_R2_merged.fq.gz
+```
 
 BEAR 2 (FLHy)
 cat FLHy*R1* > FLHy_R1_merged.fq.gz
