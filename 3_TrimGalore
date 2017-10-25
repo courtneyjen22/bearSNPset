@@ -1,0 +1,17 @@
+#TRIMMED EACH OF SIX BEAR FASTQ FILES
+
+#!/bin/bash
+#SBATCH --partition=popgenom
+#SBATCH --job-name=TrimCLA
+#SBATCH --output=CLAout.txt
+#SBATCH --error=CLAerror.txt
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=1
+
+/data/kelley/projects/programs/trim_galore \
+-q 30 --fastqc_args "--noextract --nogroup" --length 60 --clip_R1 12 --clip_R2 12 \
+--paired /data/kelley/projects/courtney_bear/rawdata/CLA_R1_merged.fq.gz \
+/data/kelley/projects/courtney_bear/rawdata/CLA_R2_merged.fq.gz
+
+
