@@ -6,3 +6,6 @@ File that contains code to concatenate all of the raw reads per individual
 
 # Run Fastqc
 File that contains code to run fast qc for each of the concatenated files
+
+# Run TrimGalore
+File that contains code to run trimgalore for each of the concatenated files
