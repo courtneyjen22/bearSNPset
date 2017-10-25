@@ -1,2 +1,3 @@
 #Run fastqc for each of the merged files for each bear.
-fastqc -o /data/kelley/projects/courtney_bear/1_fastqc --noextract --nogroup /data/kelley/projects/courtney_bear/rawdata/*merged*
+fastqc -o /data/kelley/projects/courtney_bear/1_fastqc --noextract \
+--nogroup /data/kelley/projects/courtney_bear/rawdata/*merged*
