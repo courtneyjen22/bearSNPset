@@ -1,0 +1,124 @@
+#####3_STAR_Align#########
+
+#Generating_Genome_Index
+#!/bin/bash
+#SBATCH --partition=popgenom
+#SBATCH --job-name=STAR
+#SBATCH --output=out.txt
+#SBATCH --error=error.txt
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=6
+
+
+
+STAR --runThreadN 6 --runMode genomeGenerate --genomeDir /data/kelley/projects/courtney_bear/3_star/2_star_genomedir \
+--genomeFastaFiles /data/kelley/projects/courtney_bear/reference_genome/UMaritimus.fa \
+--sjdbGTFfile /data/kelley/projects/Shawn/Courtneys_project/GCF_000687225.1_UrsMar_1.0_genomic.gff --sjdbOverhang 100 --sjdbGTFtagExonParentTranscript Parent
+
+
+##change script to change genome directory
+
+#!/bin/bash
+#SBATCH --partition=popgenom
+#SBATCH --job-name=STAR_Index
+#SBATCH --output=out.txt
+#SBATCH --error=error.txt
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=5
+
+STAR --runThreadN 20 --runMode genomeGenerate --genomeDir /data/kelley/projects/courtney_bear/3_star/star_genome_dir \
+--genomeFastaFiles /data/kelley/projects/courtney_bear/reference_genome/UMaritimus.fa
+
+#MappingReads
+#!/bin/bash
+#SBATCH --partition=popgenom
+#SBATCH --job-name=CLA_STAR	
+#SBATCH --output=out.txt
+#SBATCH --error=error.txt
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem-per-cpu=20000
+
+STAR --runThreadN 5 --genomeDir /data/kelley/projects/courtney_bear/3_star/star_genome_dir \
+--twopass1readsN 200000000 --twopassMode Basic --sjdbOverhang 87 \
+--readFilesIn /data/kelley/projects/courtney_bear/2_trimgalore/trimmed_reads/CLA_R1_merged_val_1.fq.gz \
+/data/kelley/projects/courtney_bear/2_trimgalore/trimmed_reads/CLA_R2_merged_val_2.fq.gz \
+--readFilesCommand zcat --outSAMtype BAM SortedByCoordinate
+
+#!/bin/bash
+#SBATCH --partition=popgenom
+#SBATCH --job-name=FLHy_STAR	
+#SBATCH --output=out.txt
+#SBATCH --error=error.txt
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=5
+
+STAR --runThreadN 5 --genomeDir /data/kelley/projects/courtney_bear/3_star/star_genome_dir \
+--twopass1readsN 200000000 --twopassMode Basic --sjdbOverhang 87 \
+--readFilesIn /data/kelley/projects/courtney_bear/2_trimgalore/trimmed_reads/FLHy_R1_merged_val_1.fq.gz \
+/data/kelley/projects/courtney_bear/2_trimgalore/trimmed_reads/FLHy_R2_merged_val_2.fq.gz
+--readFilesCommand zcat --outSAMtype BAM SortedByCoordinate
+
+#!/bin/bash
+#SBATCH --partition=popgenom
+#SBATCH --job-name=JLA_STAR	
+#SBATCH --output=out.txt
+#SBATCH --error=error.txt
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=5
+
+STAR --runThreadN 5 --genomeDir /data/kelley/projects/courtney_bear/3_star/star_genome_dir \
+--twopass1readsN 200000000 --twopassMode Basic --sjdbOverhang 86 \
+--readFilesIn /data/kelley/projects/courtney_bear/2_trimgalore/trimmed_reads/JLA_R1_merged_val_1.fq.gz \
+/data/kelley/projects/courtney_bear/2_trimgalore/trimmed_reads/JLA_R2_merged_val_2.fq.gz
+--readFilesCommand zcat --outSAMtype BAM SortedByCoordinate
+
+#!/bin/bash
+#SBATCH --partition=popgenom
+#SBATCH --job-name=OLA_STAR	
+#SBATCH --output=out.txt
+#SBATCH --error=error.txt
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=5
+
+STAR --runThreadN 5 --genomeDir /data/kelley/projects/courtney_bear/3_star/star_genome_dir \
+--twopass1readsN 200000000 --twopassMode Basic --sjdbOverhang 87 \
+--readFilesIn /data/kelley/projects/courtney_bear/2_trimgalore/trimmed_reads/OLA_R1_merged_val_1.fq.gz \
+/data/kelley/projects/courtney_bear/2_trimgalore/trimmed_reads/OLA_R2_merged_val_2.fq.gz
+--readFilesCommand zcat --outSAMtype BAM SortedByCoordinate
+
+#!/bin/bash
+#SBATCH --partition=popgenom
+#SBATCH --job-name=PLA_STAR	
+#SBATCH --output=out.txt
+#SBATCH --error=error.txt
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=5
+
+STAR --runThreadN 5 --genomeDir /data/kelley/projects/courtney_bear/3_star/star_genome_dir \
+--twopass1readsN 200000000 --twopassMode Basic --sjdbOverhang 87 \
+--readFilesIn /data/kelley/projects/courtney_bear/2_trimgalore/trimmed_reads/PLA_R1_merged_val_1.fq.gz \
+/data/kelley/projects/courtney_bear/2_trimgalore/trimmed_reads/PLA_R2_merged_val_2.fq.gz
+--readFilesCommand zcat --outSAMtype BAM SortedByCoordinate
+
+#!/bin/bash
+#SBATCH --partition=popgenom
+#SBATCH --job-name=RLA_STAR	
+#SBATCH --output=out.txt
+#SBATCH --error=error.txt
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=5
+
+STAR --runThreadN 5 --genomeDir /data/kelley/projects/courtney_bear/3_star/star_genome_dir \
+--twopass1readsN 200000000 --twopassMode Basic --sjdbOverhang 87 \
+--readFilesIn /data/kelley/projects/courtney_bear/2_trimgalore/trimmed_reads/RLA_R1_merged_val_1.fq.gz \
+/data/kelley/projects/courtney_bear/2_trimgalore/trimmed_reads/RLA_R2_merged_val_2.fq.gz
+--readFilesCommand zcat --outSAMtype BAM SortedByCoordinate
