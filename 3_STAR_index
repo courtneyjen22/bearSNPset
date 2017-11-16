@@ -1,0 +1,16 @@
+#Generating_Genome_Index
+#!/bin/bash
+#SBATCH --partition=popgenom
+#SBATCH --job-name=STAR
+#SBATCH --output=out.txt
+#SBATCH --error=error.txt
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=6
+
+
+
+STAR --runThreadN 6 --runMode genomeGenerate --genomeDir /data/kelley/projects/courtney_bear/3_star/2_star_genomedir \
+--genomeFastaFiles /data/kelley/projects/courtney_bear/reference_genome/UMaritimus.fa \
+--sjdbGTFfile /data/kelley/projects/Shawn/Courtneys_project/GCF_000687225.1_UrsMar_1.0_genomic.gff \
+--sjdbOverhang 100 --sjdbGTFtagExonParentTranscript Parent
